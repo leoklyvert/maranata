@@ -1,12 +1,13 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#123b66">
-<meta name="description" content="Encontre um de nossos templos da Igreja Cristã Maranata em Uberaba e região. Consulte endereços e trace sua rota.">
+<meta name="description" content="Encontre as Igrejas Cristãs Maranata em Uberaba e região. Consulte endereços, Instagram e localização dos templos.">
 
-<title>Igreja Cristã Maranata | Uberaba e Região</title>
+<title>ICM's em Uberaba | Igreja Cristã Maranata</title>
 
 <style>
 :root {
@@ -70,7 +71,7 @@ h1 {
 }
 
 main {
-    width: min(960px, calc(100% - 28px));
+    width: min(1100px, calc(100% - 28px));
     margin: -22px auto 45px;
     position: relative;
 }
@@ -130,19 +131,49 @@ h2 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
 }
 
 .card {
     background: white;
     border: 1px solid #e3e9ef;
     border-radius: 13px;
-    padding: 18px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    min-height: 175px;
-    box-shadow: 0 3px 12px rgba(17,48,78,.04);
+    box-shadow: 0 3px 12px rgba(17,48,78,.05);
+}
+
+.foto {
+    width: 100%;
+    height: 185px;
+    object-fit: cover;
+    display: block;
+    background: #e7edf3;
+}
+
+.foto-placeholder {
+    height: 185px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    background: linear-gradient(135deg, #e8eef4, #d7e1eb);
+    color: #718397;
+    font-size: 13px;
+}
+
+.foto-placeholder span {
+    font-size: 35px;
+}
+
+.card-content {
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .card h3 {
@@ -166,23 +197,42 @@ address {
     flex: 1;
 }
 
-.map {
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-top: 17px;
+}
+
+.botao {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    margin-top: 16px;
-    padding: 12px;
+    padding: 11px;
     border-radius: 8px;
-    background: var(--azul);
-    color: white;
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+    transition: .2s;
+}
+
+.map {
+    background: var(--azul);
+    color: white;
 }
 
 .map:hover {
     background: var(--azul-claro);
+}
+
+.instagram {
+    background: #f5eaf0;
+    color: #a12d65;
+}
+
+.instagram:hover {
+    background: #f0dce7;
 }
 
 .empty {
@@ -206,7 +256,13 @@ footer strong {
     color: var(--azul);
 }
 
-@media(max-width: 620px) {
+@media(max-width: 850px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media(max-width: 560px) {
     .hero {
         padding: 30px 17px 42px;
     }
@@ -222,11 +278,12 @@ footer strong {
 
     .grid {
         grid-template-columns: 1fr;
-        gap: 11px;
+        gap: 13px;
     }
 
-    .card {
-        min-height: auto;
+    .foto,
+    .foto-placeholder {
+        height: 200px;
     }
 
     h2 {
@@ -248,11 +305,11 @@ footer strong {
 
     <div class="subtitulo">Igreja Cristã Maranata</div>
 
-    <h1>Encontre uma congregação</h1>
+    <h1>ICM's em Uberaba</h1>
 
     <p>
         Estamos de portas abertas.
-        Encontre uma de nossas igrejas e trace sua rota.
+        Encontre uma de nossas igrejas em Uberaba e região.
     </p>
 
 </header>
@@ -261,9 +318,10 @@ footer strong {
 
     <section class="intro">
         <strong>Seja bem-vindo!</strong>
-        Consulte os endereços das congregações em Uberaba
-        e nas cidades da região. Toque em "Como chegar"
-        para abrir a localização no Google Maps.
+        <br>
+        Conheça nossas congregações, veja fotos dos templos,
+        acesse seus perfis no Instagram e encontre o caminho
+        para chegar até nós.
     </section>
 
     <label for="search">
@@ -311,6 +369,22 @@ footer strong {
 
 <script>
 
+// ==========================================
+// CADASTRO DAS CONGREGAÇÕES
+// ==========================================
+// Para adicionar fotos, coloque os arquivos
+// na pasta "imagens" do repositório.
+//
+// Exemplo:
+// foto: "imagens/central.jpg"
+//
+// Para adicionar Instagram:
+// instagram: "https://www.instagram.com/perfil/"
+//
+// Se ainda não houver foto ou Instagram,
+// mantenha null.
+// ==========================================
+
 const congregacoes = [
 
     // UBERABA – MG
@@ -319,42 +393,54 @@ const congregacoes = [
         cidade: "Uberaba – MG",
         grupo: "uberaba",
         nome: "Pacaembu II",
-        endereco: "Av. Américo Pessato, 535, Pacaembu II, Uberaba, MG"
+        endereco: "Av. Américo Pessato, 535, Pacaembu II, Uberaba, MG",
+        foto: null,
+        instagram: null
     },
 
     {
         cidade: "Uberaba – MG",
         grupo: "uberaba",
-        nome: "Centro",
-        endereco: "Rua Carlos Rodrigues da Cunha, 236, Centro, Uberaba, MG"
+        nome: "Central",
+        endereco: "Rua Carlos Rodrigues da Cunha, 236, Centro, Uberaba, MG",
+        foto: null,
+        instagram: "https://www.instagram.com/icmura/"
     },
 
     {
         cidade: "Uberaba – MG",
         grupo: "uberaba",
         nome: "Vila Militar",
-        endereco: "Rua Comandante Meira Júnior, 427, Vila Militar, Uberaba, MG"
+        endereco: "Rua Comandante Meira Júnior, 427, Vila Militar, Uberaba, MG",
+        foto: null,
+        instagram: "https://www.instagram.com/icm_vilamilitar_uberaba/"
     },
 
     {
         cidade: "Uberaba – MG",
         grupo: "uberaba",
         nome: "Amoroso Costa",
-        endereco: "Av. Djalma Castro Alves, 1609, Amoroso Costa, Uberaba, MG"
+        endereco: "Av. Djalma Castro Alves, 1609, Amoroso Costa, Uberaba, MG",
+        foto: null,
+        instagram: null
     },
 
     {
         cidade: "Uberaba – MG",
         grupo: "uberaba",
         nome: "Boa Vista",
-        endereco: "Rua Espanha, 473, Boa Vista, Uberaba, MG"
+        endereco: "Rua Espanha, 473, Boa Vista, Uberaba, MG",
+        foto: null,
+        instagram: null
     },
 
     {
         cidade: "Uberaba – MG",
         grupo: "uberaba",
         nome: "Santa Fé – Zona Rural",
-        endereco: "Rodovia Randolfo Melo Rezende, 781, Chácara, Uberaba, MG"
+        endereco: "Rodovia Randolfo Melo Rezende, 781, Chácara, Uberaba, MG",
+        foto: null,
+        instagram: null
     },
 
     // CIDADES DA REGIÃO
@@ -363,38 +449,52 @@ const congregacoes = [
         cidade: "Campo Florido – MG",
         grupo: "regiao",
         nome: "Campo Florido",
-        endereco: "Rua São José, 243, Campo Florido, MG"
+        endereco: "Rua São José, 243, Campo Florido, MG",
+        foto: null,
+        instagram: "https://www.instagram.com/icmcampoflorido/"
     },
 
     {
         cidade: "Frutal – MG",
         grupo: "regiao",
         nome: "Frutal",
-        endereco: "Rua Gonçalves Dias, 480, Frutal, MG"
+        endereco: "Rua Gonçalves Dias, 480, Frutal, MG",
+        foto: null,
+        instagram: null
     },
 
     {
         cidade: "Igarapava – SP",
         grupo: "regiao",
         nome: "Igarapava",
-        endereco: "Rua Major Nicolau Bartolomeu, 751, Igarapava, SP"
+        endereco: "Rua Major Nicolau Bartolomeu, 751, Igarapava, SP",
+        foto: null,
+        instagram: null
     },
 
     {
         cidade: "Planura – MG",
         grupo: "regiao",
         nome: "Planura",
-        endereco: "Rua Ituiutaba, 351, Planura, MG"
+        endereco: "Rua Ituiutaba, 351, Planura, MG",
+        foto: null,
+        instagram: null
     },
 
     {
         cidade: "Sacramento – MG",
         grupo: "regiao",
         nome: "Sacramento",
-        endereco: "Avenida Aníbal Ferreira Cândido, 455, Loja 02, Sacramento, MG"
+        endereco: "Avenida Aníbal Ferreira Cândido, 455, Loja 02, Sacramento, MG",
+        foto: null,
+        instagram: null
     }
 
 ];
+
+// ==========================================
+// FUNÇÕES DA PÁGINA
+// ==========================================
 
 function normalizar(texto) {
     return texto.normalize("NFD")
@@ -440,6 +540,39 @@ function renderizar() {
             const card = document.createElement("article");
             card.className = "card";
 
+            // FOTO DO TEMPLO
+
+            if (c.foto) {
+
+                const imagem = document.createElement("img");
+
+                imagem.className = "foto";
+                imagem.src = c.foto;
+                imagem.alt = "Foto da Igreja Cristã Maranata - " + c.nome;
+                imagem.loading = "lazy";
+
+                imagem.onerror = function() {
+                    const placeholder = document.createElement("div");
+                    placeholder.className = "foto-placeholder";
+                    placeholder.innerHTML = "<span>⛪</span>Foto da congregação";
+                    imagem.replaceWith(placeholder);
+                };
+
+                card.append(imagem);
+
+            } else {
+
+                const placeholder = document.createElement("div");
+                placeholder.className = "foto-placeholder";
+                placeholder.innerHTML = "<span>⛪</span>Foto da congregação";
+
+                card.append(placeholder);
+
+            }
+
+            const conteudo = document.createElement("div");
+            conteudo.className = "card-content";
+
             const titulo = document.createElement("h3");
             titulo.textContent = c.nome;
 
@@ -450,23 +583,49 @@ function renderizar() {
             const endereco = document.createElement("address");
             endereco.textContent = c.endereco;
 
-            const link = document.createElement("a");
-            link.className = "map";
-            link.target = "_blank";
-            link.rel = "noopener noreferrer";
+            const botoes = document.createElement("div");
+            botoes.className = "botoes";
 
-            link.href =
+            // INSTAGRAM
+
+            if (c.instagram) {
+
+                const instagram = document.createElement("a");
+
+                instagram.className = "botao instagram";
+                instagram.href = c.instagram;
+                instagram.target = "_blank";
+                instagram.rel = "noopener noreferrer";
+                instagram.textContent = "◎ Instagram";
+
+                botoes.append(instagram);
+
+            }
+
+            // GOOGLE MAPS
+
+            const mapa = document.createElement("a");
+
+            mapa.className = "botao map";
+            mapa.target = "_blank";
+            mapa.rel = "noopener noreferrer";
+
+            mapa.href =
                 "https://www.google.com/maps/search/?api=1&query=" +
                 encodeURIComponent(c.endereco);
 
-            link.textContent = "⌖ Como chegar";
+            mapa.textContent = "⌖ Como chegar";
 
-            card.append(
+            botoes.append(mapa);
+
+            conteudo.append(
                 titulo,
                 cidade,
                 endereco,
-                link
+                botoes
             );
+
+            card.append(conteudo);
 
             container.append(card);
 
@@ -489,3 +648,4 @@ renderizar();
 
 </body>
 </html>
+```
