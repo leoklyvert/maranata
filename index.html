@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#123b66">
-<meta name="description" content="Encontre uma congregação da Igreja Cristã Maranata em Uberaba e região. Consulte endereços e trace sua rota.">
+<meta name="description" content="Encontre um de nossos templos da Igreja Cristã Maranata em Uberaba e região. Consulte endereços e trace sua rota.">
 
 <title>Igreja Cristã Maranata | Uberaba e Região</title>
 
@@ -42,16 +42,11 @@ body {
     text-align: center;
 }
 
-.simbolo {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 58px;
-    height: 58px;
-    border: 1px solid rgba(255,255,255,.6);
-    border-radius: 50%;
-    font-size: 32px;
-    margin-bottom: 15px;
+.logo {
+    display: block;
+    width: min(260px, 75%);
+    height: auto;
+    margin: 0 auto 24px;
 }
 
 .subtitulo {
@@ -216,6 +211,11 @@ footer strong {
         padding: 30px 17px 42px;
     }
 
+    .logo {
+        width: min(230px, 75%);
+        margin-bottom: 20px;
+    }
+
     .intro {
         padding: 18px;
     }
@@ -240,7 +240,11 @@ footer strong {
 
 <header class="hero">
 
-    <div class="simbolo">✝</div>
+    <img
+        src="logo-icm-white.svg"
+        alt="Igreja Cristã Maranata"
+        class="logo"
+    >
 
     <div class="subtitulo">Igreja Cristã Maranata</div>
 
@@ -363,4 +367,125 @@ const congregacoes = [
     },
 
     {
-        cidade
+        cidade: "Frutal – MG",
+        grupo: "regiao",
+        nome: "Frutal",
+        endereco: "Rua Gonçalves Dias, 480, Frutal, MG"
+    },
+
+    {
+        cidade: "Igarapava – SP",
+        grupo: "regiao",
+        nome: "Igarapava",
+        endereco: "Rua Major Nicolau Bartolomeu, 751, Igarapava, SP"
+    },
+
+    {
+        cidade: "Planura – MG",
+        grupo: "regiao",
+        nome: "Planura",
+        endereco: "Rua Ituiutaba, 351, Planura, MG"
+    },
+
+    {
+        cidade: "Sacramento – MG",
+        grupo: "regiao",
+        nome: "Sacramento",
+        endereco: "Avenida Aníbal Ferreira Cândido, 455, Loja 02, Sacramento, MG"
+    }
+
+];
+
+function normalizar(texto) {
+    return texto.normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase();
+}
+
+function renderizar() {
+
+    const busca = normalizar(
+        document.getElementById("search").value.trim()
+    );
+
+    let total = 0;
+
+    ["uberaba", "regiao"].forEach(grupo => {
+
+        const container = document.getElementById(grupo + "-list");
+
+        container.innerHTML = "";
+
+        const itens = congregacoes.filter(c => {
+
+            const texto = normalizar(
+                [c.cidade, c.nome, c.endereco].join(" ")
+            );
+
+            return c.grupo === grupo && texto.includes(busca);
+
+        });
+
+        total += itens.length;
+
+        document.getElementById("count-" + grupo).textContent =
+            itens.length + (
+                itens.length === 1
+                ? " congregação"
+                : " congregações"
+            );
+
+        itens.forEach(c => {
+
+            const card = document.createElement("article");
+            card.className = "card";
+
+            const titulo = document.createElement("h3");
+            titulo.textContent = c.nome;
+
+            const cidade = document.createElement("div");
+            cidade.className = "cidade";
+            cidade.textContent = c.cidade;
+
+            const endereco = document.createElement("address");
+            endereco.textContent = c.endereco;
+
+            const link = document.createElement("a");
+            link.className = "map";
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+
+            link.href =
+                "https://www.google.com/maps/search/?api=1&query=" +
+                encodeURIComponent(c.endereco);
+
+            link.textContent = "⌖ Como chegar";
+
+            card.append(
+                titulo,
+                cidade,
+                endereco,
+                link
+            );
+
+            container.append(card);
+
+        });
+
+    });
+
+    document.getElementById("empty").style.display =
+        total ? "none" : "block";
+
+}
+
+document
+    .getElementById("search")
+    .addEventListener("input", renderizar);
+
+renderizar();
+
+</script>
+
+</body>
+</html>
