@@ -260,9 +260,8 @@ footer strong { color: var(--azul); }
     <div class="empty" id="empty">Nenhuma igreja encontrada. Tente outro termo.</div>
 </main>
 
-<div class="audio-notice" id="aviso-audio">
-    <button class="audio-button" id="tocar-vinheta" type="button">▶ Ouvir vinheta de abertura</button>
-    <div style="margin-top:6px;">Se o áudio não iniciou automaticamente, toque no botão acima.</div>
+<div class="audio-notice" id="aviso-audio" style="display:block;">
+    Toque ou clique em qualquer lugar da página para iniciar a vinheta de abertura.
 </div>
 
 <footer>
@@ -471,25 +470,35 @@ function renderizar() {
 document.getElementById("search").addEventListener("input", renderizar);
 renderizar();
 
-// VINHETA: tenta tocar automaticamente uma única vez por carregamento.
-// Se o navegador bloquear a reprodução automática, oferece um botão manual.
+// VINHETA: inicia na primeira interação do visitante com a página.
+// O play() é chamado diretamente dentro do evento de interação,
+// atendendo à exigência de gesto do usuário dos navegadores.
 const audio = document.getElementById("vinheta-abertura");
 const avisoAudio = document.getElementById("aviso-audio");
-const botaoAudio = document.getElementById("tocar-vinheta");
+let vinhetaIniciada = false;
 
-audio.play().then(() => {
-    avisoAudio.style.display = "none";
-}).catch(() => {
-    avisoAudio.style.display = "block";
-});
+function iniciarVinheta() {
+    if (vinhetaIniciada) return;
+    vinhetaIniciada = true;
 
-botaoAudio.addEventListener("click", () => {
     audio.play().then(() => {
         avisoAudio.style.display = "none";
     }).catch(() => {
+        // Se ainda assim não for permitido, mantém uma orientação discreta.
+        avisoAudio.textContent =
+            "Não foi possível iniciar o áudio. Verifique o volume e as permissões do navegador.";
         avisoAudio.style.display = "block";
+        vinhetaIniciada = false;
     });
-});
+
+    document.removeEventListener("pointerdown", iniciarVinheta, true);
+    document.removeEventListener("keydown", iniciarVinheta, true);
+    document.removeEventListener("touchstart", iniciarVinheta, true);
+}
+
+document.addEventListener("pointerdown", iniciarVinheta, true);
+document.addEventListener("keydown", iniciarVinheta, true);
+document.addEventListener("touchstart", iniciarVinheta, true);
 </script>
 </body>
 </html>
