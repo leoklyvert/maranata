@@ -1,1 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123b66">
+<meta name="description" content="Encontre uma congregação da Igreja Cristã Maranata em Uberaba e região. Consulte endereços e trace sua rota.">
 
+<title>Igreja Cristã Maranata | Uberaba e Região</title>
+
+<style>
+:root {
+    --azul: #123b66;
+    --azul-claro: #1c568b;
+    --dourado: #c7a45b;
+    --texto: #203044;
+    --cinza: #657487;
+    --fundo: #f3f6f9;
+    --branco: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.5;
+}
+
+.hero {
+    background: linear-gradient(135deg, #0d2d4e, #1b5687);
+    color: white;
+    padding: 38px 20px 48px;
+    text-align: center;
+}
+
+.simbolo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 58px;
+    height: 58px;
+    border: 1px solid rgba(255,255,255,.6);
+    border-radius: 50%;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.subtitulo {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #e7d5ad;
+}
+
+h1 {
+    font-size: clamp(27px, 5vw, 40px);
+    line-height: 1.2;
+    margin: 12px 0;
+}
+
+.hero p {
+    max-width: 600px;
+    margin: auto;
+    color: #e7eef5;
+}
+
+main {
+    width: min(960px, calc(100% - 28px));
+    margin: -22px auto 45px;
+    position: relative;
+}
+
+.intro {
+    background: white;
+    border-radius: 15px;
+    padding: 22px;
+    box-shadow: 0 8px 28px rgba(17,48,78,.08);
+    margin-bottom: 28px;
+}
+
+.intro strong {
+    color: var(--azul);
+}
+
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--cinza);
+    margin-bottom: 8px;
+}
+
+.search {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #d5dee7;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    background: white;
+}
+
+.search:focus {
+    border-color: var(--azul-claro);
+}
+
+.section-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 30px 2px 14px;
+}
+
+h2 {
+    color: var(--azul);
+    font-size: 22px;
+    margin: 0;
+}
+
+.count {
+    color: var(--cinza);
+    font-size: 13px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e3e9ef;
+    border-radius: 13px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    min-height: 175px;
+    box-shadow: 0 3px 12px rgba(17,48,78,.04);
+}
+
+.card h3 {
+    margin: 0 0 5px;
+    color: var(--azul);
+    font-size: 18px;
+}
+
+.cidade {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #8a6b2e;
+    margin-bottom: 10px;
+}
+
+address {
+    font-style: normal;
+    color: #536477;
+    font-size: 14px;
+    flex: 1;
+}
+
+.map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 16px;
+    padding: 12px;
+    border-radius: 8px;
+    background: var(--azul);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.map:hover {
+    background: var(--azul-claro);
+}
+
+.empty {
+    display: none;
+    background: white;
+    padding: 22px;
+    border-radius: 10px;
+    text-align: center;
+    color: var(--cinza);
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px 15px 35px;
+    color: #748194;
+    font-size: 13px;
+}
+
+footer strong {
+    color: var(--azul);
+}
+
+@media(max-width: 620px) {
+    .hero {
+        padding: 30px 17px 42px;
+    }
+
+    .intro {
+        padding: 18px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 11px;
+    }
+
+    .card {
+        min-height: auto;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+    <div class="simbolo">✝</div>
+
+    <div class="subtitulo">Igreja Cristã Maranata</div>
+
+    <h1>Encontre uma congregação</h1>
+
+    <p>
+        Estamos de portas abertas.
+        Encontre uma de nossas igrejas e trace sua rota.
+    </p>
+
+</header>
+
+<main>
+
+    <section class="intro">
+        <strong>Seja bem-vindo!</strong>
+        Consulte os endereços das congregações em Uberaba
+        e nas cidades da região. Toque em "Como chegar"
+        para abrir a localização no Google Maps.
+    </section>
+
+    <label for="search">
+        PESQUISAR POR CIDADE, BAIRRO OU ENDEREÇO
+    </label>
+
+    <input
+        id="search"
+        class="search"
+        type="search"
+        placeholder="Ex.: Centro, Frutal, Boa Vista..."
+        autocomplete="off"
+    >
+
+    <section>
+        <div class="section-head">
+            <h2>Uberaba – MG</h2>
+            <span class="count" id="count-uberaba"></span>
+        </div>
+
+        <div class="grid" id="uberaba-list"></div>
+    </section>
+
+    <section>
+        <div class="section-head">
+            <h2>Cidades da região</h2>
+            <span class="count" id="count-regiao"></span>
+        </div>
+
+        <div class="grid" id="regiao-list"></div>
+    </section>
+
+    <div class="empty" id="empty">
+        Nenhuma congregação encontrada.
+        Tente outro termo.
+    </div>
+
+</main>
+
+<footer>
+    <strong>Igreja Cristã Maranata</strong>
+    <br>
+    Uberaba – Minas Gerais
+</footer>
+
+<script>
+
+const congregacoes = [
+
+    // UBERABA – MG
+
+    {
+        cidade: "Uberaba – MG",
+        grupo: "uberaba",
+        nome: "Pacaembu II",
+        endereco: "Av. Américo Pessato, 535, Pacaembu II, Uberaba, MG"
+    },
+
+    {
+        cidade: "Uberaba – MG",
+        grupo: "uberaba",
+        nome: "Centro",
+        endereco: "Rua Carlos Rodrigues da Cunha, 236, Centro, Uberaba, MG"
+    },
+
+    {
+        cidade: "Uberaba – MG",
+        grupo: "uberaba",
+        nome: "Vila Militar",
+        endereco: "Rua Comandante Meira Júnior, 427, Vila Militar, Uberaba, MG"
+    },
+
+    {
+        cidade: "Uberaba – MG",
+        grupo: "uberaba",
+        nome: "Amoroso Costa",
+        endereco: "Av. Djalma Castro Alves, 1609, Amoroso Costa, Uberaba, MG"
+    },
+
+    {
+        cidade: "Uberaba – MG",
+        grupo: "uberaba",
+        nome: "Boa Vista",
+        endereco: "Rua Espanha, 473, Boa Vista, Uberaba, MG"
+    },
+
+    {
+        cidade: "Uberaba – MG",
+        grupo: "uberaba",
+        nome: "Santa Fé – Zona Rural",
+        endereco: "Rodovia Randolfo Melo Rezende, 781, Chácara, Uberaba, MG"
+    },
+
+    // CIDADES DA REGIÃO
+
+    {
+        cidade: "Campo Florido – MG",
+        grupo: "regiao",
+        nome: "Campo Florido",
+        endereco: "Rua São José, 243, Campo Florido, MG"
+    },
+
+    {
+        cidade
