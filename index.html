@@ -308,7 +308,59 @@ address {
     color: var(--cinza);
     font-size: 13px;
 }
+/* CARD DE CONSULTA DE IGREJAS */
+.consulta-mundial {
+    background: #ffffff;
+    border: 1px solid #e3e9ef;
+    border-top: 4px solid var(--azul);
+    border-radius: 16px;
+    padding: 35px 25px;
+    margin: 40px auto 35px;
+    max-width: 850px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(17, 48, 78, 0.08);
+}
 
+.consulta-mundial h2 {
+    color: var(--azul);
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.consulta-mundial p {
+    color: var(--cinza);
+    max-width: 600px;
+    margin: 0 auto 25px;
+    line-height: 1.6;
+}
+
+.consulta-opcoes {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.consulta-opcoes .botao {
+    min-width: 220px;
+    padding: 14px 22px;
+    font-size: 15px;
+}
+
+@media (max-width: 560px) {
+    .consulta-mundial {
+        padding: 28px 18px;
+    }
+
+    .consulta-opcoes {
+        flex-direction: column;
+    }
+
+    .consulta-opcoes .botao {
+        width: 100%;
+    }
+}
 /* RODAPÉ */
 footer {
     text-align: center;
@@ -390,7 +442,40 @@ footer strong {
 
     <p>Estamos de portas abertas. Encontre uma de nossas igrejas em Uberaba e região.</p>
 </header>
+<!-- CONSULTA DE IGREJAS -->
+<section class="consulta-mundial">
 
+    <h2>Encontre uma Igreja Cristã Maranata</h2>
+
+    <p>
+        Está em outra cidade, estado ou país?
+        Consulte os endereços das Igrejas Cristãs Maranata
+        por meio dos nossos diretórios oficiais.
+    </p>
+
+    <div class="consulta-opcoes">
+
+        <a
+            class="botao map"
+            href="https://consulta-publica-igrejas.presbiterio.org.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            🌎 Igrejas no Brasil
+        </a>
+
+        <a
+            class="botao instagram"
+            href="https://www.igrejacristamaranata.org.br/enderecos-no-exterior/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            ✈ Igrejas no mundo
+        </a>
+
+    </div>
+
+</section>
 <main>
 
     <section class="intro">
