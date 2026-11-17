@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -46,6 +47,34 @@ body {
     max-width: 90%;
     height: auto;
     margin: 0 auto;
+}
+
+/* VÍDEO DESTAQUE */
+.video-destaque {
+    max-width: 900px;
+    margin: 20px auto 30px;
+    padding: 22px;
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 8px 28px rgba(17,48,78,.08);
+}
+
+.video-destaque h2 {
+    margin-bottom: 6px;
+}
+
+.video-destaque p {
+    color: var(--cinza);
+    margin: 0 0 18px;
+}
+
+.video-destaque video {
+    display: block;
+    width: 100%;
+    max-height: 480px;
+    border-radius: 10px;
+    background: #000;
 }
 
 /* CABEÇALHO */
@@ -332,6 +361,17 @@ footer strong {
         alt="Banner do Trabalho de Fevereiro de 2026"
     >
 </div>
+
+<!-- VÍDEO ESPECIAL -->
+<section class="video-destaque">
+    <h2>Uma mensagem especial</h2>
+    <p>Um momento especial para nossa igreja. Assista ao vídeo.</p>
+
+    <video controls preload="metadata" playsinline>
+        <source src="PR_Gilson.mp4" type="video/mp4">
+        Seu navegador não suporta a reprodução de vídeos.
+    </video>
+</section>
 
 <!-- CABEÇALHO ORIGINAL -->
 <header class="hero">
@@ -728,3 +768,4 @@ document.addEventListener(
 
 </body>
 </html>
+```
